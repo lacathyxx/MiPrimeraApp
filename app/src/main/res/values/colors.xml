@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light -->
+    <color name="primary_light">#0F766E</color>
+    <color name="on_primary_light">#FFFFFF</color>
+    <color name="secondary_light">#475569</color>
+    <color name="background_light">#E6F4F1</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="on_surface_light">#1E293B</color>
+
+    <!-- Dark -->
+    <color name="primary_dark">#5EEAD4</color>
+    <color name="on_primary_dark">#003731</color>
+    <color name="secondary_dark">#94A3B8</color>
+    <color name="background_dark">#0F172A</color>
+    <color name="surface_dark">#1E293B</color>
+    <color name="on_surface_dark">#E2E8F0</color>
+
+    <color name="dialog_bg">#B3FFFFFF</color>
+    <color name="item_bg">#FFFFFF</color>
+    <color name="item_stroke">#0F766E</color>
+
+
+</resources>
