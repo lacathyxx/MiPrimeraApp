@@ -1,23 +1,16 @@
 package com.example.miprimeraapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ListView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.util.LinkedList
 
 class MainActivity : AppCompatActivity() {
-    private val elementos = LinkedList<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,42 +21,20 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val editElemento = findViewById<EditText>(R.id.editElemento)
-        val btnAnadir = findViewById<Button>(R.id.btnAnadir)
-        val listElementos = findViewById<ListView>(R.id.listElementos)
+        val editTexto = findViewById<EditText>(R.id.editTexto)
+        val btnCompartir = findViewById<Button>(R.id.btnCompartir)
 
-        val adapter = ArrayAdapter(this, R.layout.item_row, R.id.textItem, elementos)
+        btnCompartir.setOnClickListener {
+            val texto = editTexto.text.toString()
 
-        listElementos.adapter = adapter
-
-        /* Add Elements */
-        btnAnadir.setOnClickListener {
-            val texto = editElemento.text.toString()
-            if (texto.isNotBlank()) {
-                if (elementos.contains(texto)) {
-                    Toast.makeText(this, "The item already exists", Toast.LENGTH_SHORT).show()
-                } else {
-                    elementos.add(texto)
-                    adapter.notifyDataSetChanged()
-                    editElemento.text.clear()
-                }
+            val sendIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, texto)
+                type = "text/plain"
             }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
         }
-        /* Delete Elements */
-        listElementos.setOnItemLongClickListener { _, _, position, _ ->
-            MaterialAlertDialogBuilder(this)
-                .setBackground(ContextCompat.getDrawable(this, R.drawable.dialog_bg))
-                .setMessage("Do you want to delete this item?")
-                .setPositiveButton("Yes") { _, _ ->
-                    elementos.removeAt(position)
-                    adapter.notifyDataSetChanged()
-                }
-                .setNegativeButton("No", null)
-                .show()
-            true
-        }
-
-
-
     }
 }

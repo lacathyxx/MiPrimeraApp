@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MiPrimeraApp</string>
+    <string name="enter_a_number">Enter a number</string>
+    <string name="my_first_application">My first application</string>
+    <string name="send_number">Send number</string>
+    <string name="received_text">Received text</string>
+    <string name="text_received_from_another_application">Text received from another application:</string>
+    <string name="share_again">Share again</string>
+    <string name="shared_text_will_appear_here">Shared text will appear here</string>
+    <string name="share_text">Share text</string>
+    <string name="write_something_and_send_it_to_another_app">Write something and send it to another app.</string>
+    <string name="write_some_text_to_share">Write some text to share</string>
 </resources>
